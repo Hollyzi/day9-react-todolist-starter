@@ -1,17 +1,19 @@
 
-.text-border{
+.text-border {
     width: 200px;
     border: 1px solid black;
-    margin:auto ;
+    margin: auto;
     display: inline-block;
     margin-right: 10px;
 }
-.done-item{
-    text-decoration:line-through;
+
+.done-item {
+    text-decoration: line-through;
 }
-.blue-button{
-    background-color:lightblue;
-    border-color:lightblue;
-    color:white;
+
+.blue-button {
+    background-color: lightblue;
+    border-color: lightblue;
+    color: white;
     margin-left: 10px;
 }

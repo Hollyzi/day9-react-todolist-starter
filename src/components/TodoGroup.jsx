@@ -3,24 +3,22 @@ import {useContext} from "react";
 import {TodoContext} from "../App";
 import TodoItem from "./TodoItem";
 
-const TodoGroup=()=>{
+const TodoGroup = () => {
     const {state} = useContext(TodoContext)
-    console.log("state-------", {state})
-    const output= (
+    const todoItems = (
         <div>
             {
                 state.map((value, index) => {
                     return <TodoItem key={value.id + index} todo={value}></TodoItem>
                 })
             }
-
         </div>
     )
-    const emptyOutput= (
+    const emptyOutput = (
         <div>Add things you to do today</div>
     )
     return (
-        state.length?output:emptyOutput
+        state.length ? todoItems : emptyOutput
     )
 }
 export default TodoGroup

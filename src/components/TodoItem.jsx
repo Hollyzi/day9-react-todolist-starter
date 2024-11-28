@@ -1,15 +1,16 @@
 import {useContext} from "react";
 import {TodoContext} from "../App";
 import "../style/line_through.css"
+import {DONE, DELETE} from "../context/todoReducer"
 
-const TodoItem=(props)=>{
-    const {dispatch}=useContext(TodoContext)
-    const handleDelete=()=>{
-        dispatch({type:'DELETE',payload:props.todo})
+const TodoItem = (props) => {
+    const {dispatch} = useContext(TodoContext)
+    const handleDelete = () => {
+        dispatch({type: DELETE, payload: props.todo})
     }
-    const handleDone=(event)=>{
-        dispatch({type:'DONE',payload:props.todo})
-        event.target.className="done-item"
+    const handleDone = (event) => {
+        dispatch({type: DONE, payload: props.todo})
+        event.target.className = "done-item"
     }
     return (
         <div>
@@ -22,4 +23,4 @@ const TodoItem=(props)=>{
         </div>
     )
 }
-export  default TodoItem
+export default TodoItem
