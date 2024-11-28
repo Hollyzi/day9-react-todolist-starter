@@ -12,9 +12,13 @@ const TodoItem=(props)=>{
         event.target.className="done-item"
     }
     return (
-        <div onClick={handleDone} className="text-border">
-            {props.todo.text}
-        <button onClick={handleDelete}>X</button>
+        <div>
+            <div className="text-border">
+                <span onClick={handleDone}>
+                    {props.todo.text}
+                </span>
+            </div>
+            <button onClick={handleDelete}>X</button>
         </div>
     )
 }

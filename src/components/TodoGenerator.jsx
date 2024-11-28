@@ -7,13 +7,15 @@ const TodoGenerator=()=>{
     const handleChange=(event)=>{
        setText(event.target.value)
     }
-    const handleAdd=()=>{
-        dispatch({type:'ADD',payload:text})
+    const handleAdd=(event)=>{
+        if(text){
+           dispatch({type:'ADD',payload:text})
+       }
     }
     return(
         <div>
-            <input value={text} onChange={handleChange}/>
-            <button onClick={handleAdd}>add</button>
+            <input name="inputTodo" value={text} onChange={handleChange}/>
+            <button onClick={handleAdd} className="blue-button">add</button>
         </div>
     )
 }
