@@ -9,10 +9,10 @@ const TodoItem=(props)=>{
     }
     const handleDone=(event)=>{
         dispatch({type:'DONE',payload:props.todo})
-        event.target.className="done"
+        event.target.className="done-item"
     }
     return (
-        <div onClick={handleDone}>
+        <div onClick={handleDone} className="text-border">
             {props.todo.text}
         <button onClick={handleDelete}>X</button>
         </div>
