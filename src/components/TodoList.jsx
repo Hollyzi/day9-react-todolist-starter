@@ -3,6 +3,7 @@ import TodoGenerator from "./TodoGenerator";
 import {useContext, useEffect} from "react";
 import {getTodos} from "../apis/todoAPI";
 import {TodoContext} from "../App";
+import TodoSearcher from "./TodoSearcher";
 
 const TodoList = () => {
    const {dispatch}=useContext(TodoContext)
@@ -17,6 +18,7 @@ const TodoList = () => {
             <h1>Todo List</h1>
             <TodoGroup></TodoGroup>
             <TodoGenerator></TodoGenerator>
+            <TodoSearcher/>
         </div>
 
     );

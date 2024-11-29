@@ -8,16 +8,21 @@ const instance=axios.create(
 );
 
 export const getTodos=async ()=>{
-    const response = instance.get("/TodoItem");
+    const response = await instance.get("/TodoItem");
     return (await response).data
 }
 
 export const addTodo=async (todo)=>{
-    const response=instance.post("/TodoItem",todo)
-    return (await response).data
+    const response= await instance.post("/TodoItem",todo)
+    return response.data
 }
 
 export const deleteTodo=async (id)=>{
-    const response=instance.delete(`/TodoItem/${id}`)
-    return (await response).data
+    const response=await instance.delete(`/TodoItem/${id}`)
+    return  response.data
+}
+
+export const searchTodo=async (id)=>{
+    const response=await instance.get(`/TodoItem/${id}`)
+    return response.data
 }
