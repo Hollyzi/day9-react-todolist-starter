@@ -1,6 +1,8 @@
 import {useContext, useState} from "react";
 import {TodoContext} from "../App";
 import {ADD} from "../context/todoReducer"
+import axios from "axios";
+import {addTodo, getTodos} from "../apis/todoAPI";
 
 
 const TodoGenerator = () => {
@@ -9,10 +11,16 @@ const TodoGenerator = () => {
     const handleChange = (event) => {
         setText(event.target.value)
     }
-    const handleAdd = () => {
-        if (text) {
-            dispatch({type: ADD, payload: text})
-        }
+    const handleAdd = async () => {
+        let newTodo = {id: Date.now(), text: text, done: false};
+        await addTodo(newTodo).then((response)=>
+            console.log("add success",response));
+        await getTodos().then((todos)=>{
+            dispatch({type:'INIT',payload:todos})
+        });
+        // if (text) {
+        //     dispatch({type: ADD, payload: newTodo})
+        // }
     }
     return (
         <div>

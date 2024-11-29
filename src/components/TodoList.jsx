@@ -1,7 +1,7 @@
 import TodoGroup from "./TodoGroup";
 import TodoGenerator from "./TodoGenerator";
 import {useContext, useEffect} from "react";
-import {getTodos} from "../apis/todo";
+import {getTodos} from "../apis/todoAPI";
 import {TodoContext} from "../App";
 
 const TodoList = () => {
@@ -9,7 +9,6 @@ const TodoList = () => {
     useEffect(() => {
          getTodos().then((todos)=>{
              dispatch({type:'INIT',payload:todos})
-             console.log("getTodo........",todos)
          });
     }, []);
 

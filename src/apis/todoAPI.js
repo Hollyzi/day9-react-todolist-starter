@@ -11,3 +11,8 @@ export const getTodos=async ()=>{
     const response = instance.get("/TodoItem");
     return (await response).data
 }
+
+export const addTodo=async (todo)=>{
+    const response=instance.post("/TodoItem",todo)
+    return (await response).data
+}

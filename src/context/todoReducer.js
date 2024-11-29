@@ -1,3 +1,7 @@
+import {addTodo, getTodos} from "../apis/todoAPI";
+import {useContext} from "react";
+import {TodoContext} from "../App";
+
 export const initialState = [{id: Date.now(), text:"xxxx", done: false}];
 
 export const ADD = "ADD";
@@ -5,7 +9,7 @@ export const DELETE = "DELETE";
 export const DONE = "DONE";
 export const todoReducer = (state, action) => {
     if (action.type === ADD) {
-        return [...state, {id: Date.now(), text: action.payload, done: false}]
+        return [...state, action.payload]
     }
     if (action.type === DELETE) {
         return [...state].filter(e => e.id !== action.payload.id)
