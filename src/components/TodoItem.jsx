@@ -15,7 +15,7 @@ const TodoItem = (props) => {
     return (
         <div>
             <div className="text-border">
-                <span onClick={handleDone}>
+                <span  onClick={handleDone}>
                     {props.todo.text}
                 </span>
             </div>
