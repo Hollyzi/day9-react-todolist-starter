@@ -1,4 +1,4 @@
-export const initialState = [];
+export const initialState = [{id: Date.now(), text:"xxxx", done: false}];
 
 export const ADD = "ADD";
 export const DELETE = "DELETE";
@@ -11,12 +11,13 @@ export const todoReducer = (state, action) => {
         return [...state].filter(e => e.id !== action.payload.id)
     }
     if (action.type === DONE) {
-        [...state].forEach(e => {
+        state.forEach(e => {
                 if (e.id === action.payload.id) {
                     e.done = true
                 }
             }
         )
+        console.log("done state..",state)
         return state;
     }
     return state;
