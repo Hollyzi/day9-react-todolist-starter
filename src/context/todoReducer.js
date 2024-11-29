@@ -13,12 +13,16 @@ export const todoReducer = (state, action) => {
     if (action.type === DONE) {
         state.forEach(e => {
                 if (e.id === action.payload.id) {
-                    e.done = true
+                    // e.done = e.done?false:true
+                    e.done=true
                 }
             }
         )
         console.log("done state..",state)
         return state;
+    }
+    if(action.type==="INIT"){
+        return action.payload
     }
     return state;
 };
