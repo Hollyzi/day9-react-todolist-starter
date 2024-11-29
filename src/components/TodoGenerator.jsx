@@ -12,10 +12,10 @@ const TodoGenerator = () => {
         setText(event.target.value)
     }
     const handleAdd = async () => {
-        let newTodo = {id: Date.now(), text: text, done: false};
-        await addTodo(newTodo).then((response)=>
-            console.log("add success",response));
-        await getTodos().then((todos)=>{
+        let newTodo = {text: text, done: false};
+        const addResult = await addTodo(newTodo);
+        console.log("add success",addResult);
+        getTodos().then((todos)=>{
             dispatch({type:'INIT',payload:todos})
         });
         // if (text) {
