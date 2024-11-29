@@ -1,16 +1,17 @@
-//get context data
 import {useContext} from "react";
 import {TodoContext} from "../App";
 import TodoItem from "./TodoItem";
 
 const TodoGroup = () => {
     const {state} = useContext(TodoContext)
+    const TodoItems = state.map((value, index) => {
+        return <TodoItem key={value.id + index} todo={value}></TodoItem>
+    });
+
     const todoItems = (
         <div>
             {
-                state.map((value, index) => {
-                    return <TodoItem key={value.id + index} todo={value}></TodoItem>
-                })
+                TodoItems
             }
         </div>
     )

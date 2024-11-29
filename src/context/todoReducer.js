@@ -2,7 +2,7 @@ import {addTodo, getTodos} from "../apis/todoAPI";
 import {useContext} from "react";
 import {TodoContext} from "../App";
 
-export const initialState = [{id: Date.now(), text:"xxxx", done: false}];
+export const initialState = [];
 
 export const ADD = "ADD";
 export const DELETE = "DELETE";

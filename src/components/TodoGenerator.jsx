@@ -18,9 +18,6 @@ const TodoGenerator = () => {
         getTodos().then((todos)=>{
             dispatch({type:'INIT',payload:todos})
         });
-        // if (text) {
-        //     dispatch({type: ADD, payload: newTodo})
-        // }
     }
     return (
         <div>
