@@ -2,10 +2,12 @@ import {useContext} from "react";
 import {TodoContext} from "../App";
 import "../style/line_through.css"
 import {DONE, DELETE} from "../context/todoReducer"
+import {deleteTodo} from "../apis/todoAPI";
 
 const TodoItem = (props) => {
     const {dispatch} = useContext(TodoContext)
     const handleDelete = () => {
+        deleteTodo(props.todo.id).then((reponse)=>console.log("delete successfully",reponse));
         dispatch({type: DELETE, payload: props.todo})
     }
     const handleDone = (event) => {
