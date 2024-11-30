@@ -1,7 +1,7 @@
 import {useContext, useState} from "react";
 import {TodoContext} from "../App";
 import "../style/line_through.css"
-import {DONE, DELETE} from "../context/todoReducer"
+import {DONE, DELETE, INIT, SETALL} from "../context/todoReducer"
 import {deleteTodo, getTodos, updateTodo} from "../apis/todoAPI";
 import {Modal} from "antd";
 import TextArea from "antd/es/input/TextArea";
@@ -15,9 +15,9 @@ const TodoItem = (props) => {
         deleteTodo(props.todo.id).then((reponse) => console.log("delete successfully", reponse));
         dispatch({type: DELETE, payload: props.todo})
     }
-    const handleDone = (event) => {
+    const handleDone = () => {
+        updateTodo(props.todo.id,{done:!(props.todo.done)});
         dispatch({type: DONE, payload: props.todo})
-        event.target.className = "done-item"
     }
     const showModal = () => {
         setIsModalOpen(true);
@@ -27,8 +27,10 @@ const TodoItem = (props) => {
     };
     const handleOk = () => {
         if (inputValue.text !== props.todo.text && inputValue.text.trim()) {
-            updateTodo(props.todo.id, inputValue).then((response) => {
-                getTodos()
+            updateTodo(props.todo.id, inputValue).then(() => {
+                getTodos().then((getTodos) => {
+                    dispatch({type:SETALL,payload:getTodos})
+                })
             })
         }
         setIsModalOpen(false);
@@ -45,7 +47,7 @@ const TodoItem = (props) => {
     return (
         <div>
             <div className="text-border" onClick={showModal}>
-                <span onClick={handleDone}>
+                <span onClick={handleDone} className={props.todo.done?"done-item":""}>
                     {props.todo.text}
                 </span>
             </div>

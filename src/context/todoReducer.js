@@ -3,31 +3,36 @@ import {useContext} from "react";
 import {TodoContext} from "../App";
 
 export const initialState = [];
+export const allTodoState=[];
 
 export const ADD = "ADD";
 export const DELETE = "DELETE";
 export const DONE = "DONE";
+export const SETALL = "SETALL";
+export const INIT = "INIT";
+export const UPDATE = "UPDATE";
 export const todoReducer = (state, action) => {
+    const{init,all}=state
     if (action.type === ADD) {
-        return [...state, action.payload]
+        return {init,all:[...all,action.payload]}
     }
     if (action.type === DELETE) {
-        return [...state].filter(e => e.id !== action.payload.id)
+        return {init,all:[...all].filter(e => e.id !== action.payload.id)}
     }
     if (action.type === DONE) {
-        state.forEach(e => {
-                if (e.id === action.payload.id) {
-                    // e.done = e.done?false:true
-                    e.done=true
-                }
+        const updatedAll = all.map(e => {
+            if (e.id === action.payload.id) {
+                return { ...e, done: !e.done };
             }
-        )
-        console.log("done state..",state)
-        return state;
+            return e;
+        });
+        return {init,all:updatedAll};
     }
-    if(action.type==="INIT"){
-        return action.payload
+    if(action.type===INIT){
+        return {init:action.payload,all}
     }
-    // if(actio)
-    return state;
+    if(action.type= SETALL){
+        return{init,all: action.payload}
+    }
+    return init;
 };

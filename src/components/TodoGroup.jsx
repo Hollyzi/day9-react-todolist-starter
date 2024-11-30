@@ -4,7 +4,8 @@ import TodoItem from "./TodoItem";
 
 const TodoGroup = () => {
     const {state} = useContext(TodoContext)
-    const TodoItems = state.map((value, index) => {
+    const {init, all} = state
+    const TodoItems = init.map((value, index) => {
         return <TodoItem key={value.id + index} todo={value}></TodoItem>
     });
 
@@ -19,7 +20,7 @@ const TodoGroup = () => {
         <div>Add things you to do today</div>
     )
     return (
-        state.length ? todoItems : emptyOutput
+        init&&init.length ? todoItems : emptyOutput
     )
 }
 export default TodoGroup

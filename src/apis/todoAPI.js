@@ -27,7 +27,7 @@ export const searchTodo=async (id)=>{
     return response.data
 }
 
-export const updateTodo=async (id,text)=>{
-    const response=await instance.put(`/TodoItem/${id}`,text)
+export const updateTodo=async (id,todo)=>{
+    const response=await instance.put(`/TodoItem/${id}`,todo)
     return response.data
 }

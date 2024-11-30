@@ -4,12 +4,12 @@ import {TodoContext} from "../App";
 
 const DoneList = () => {
     const {state} = useContext(TodoContext)
-    let filter = state.filter(todo => todo.done);
-    console.log("state......",state)
+    const{all}=state
+    let filterDone = all.filter(todo => todo.done);
     return (<div>
             {
-                filter.map((value) => {
-                    return <div>{value.text}</div>
+                filterDone.map((value) => {
+                    return <div key={value.id}>{value.text}</div>
                 })
             }
         </div>

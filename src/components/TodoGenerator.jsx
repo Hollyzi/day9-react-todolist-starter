@@ -1,6 +1,6 @@
 import {useContext, useState} from "react";
 import {TodoContext} from "../App";
-import {ADD} from "../context/todoReducer"
+import {ADD, SETALL} from "../context/todoReducer"
 import axios from "axios";
 import {addTodo, getTodos} from "../apis/todoAPI";
 
