@@ -12,14 +12,19 @@ const TodoSearcher = () => {
         setText(event.target.value)
     }
     const handleSearch = async () => {
-       const searchResult = await searchTodo(text);
-       console.log("search.....",searchResult)
-       dispatch({type:'INIT',payload:[searchResult]})
+
+        searchTodo(text).then(
+            (response) => {
+                dispatch({type: 'INIT', payload: [response]})
+            }
+        ).catch((error) => {
+            console.log("search error", error)
+        })
 
     }
     return (
         <div>
-            <input  value={text} onChange={handleChange}/>
+            <input value={text} onChange={handleChange}/>
             <button onClick={handleSearch} className="blue-button">Search</button>
         </div>
     )

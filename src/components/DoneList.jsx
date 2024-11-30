@@ -4,7 +4,7 @@ import {TodoContext} from "../App";
 
 const DoneList = () => {
     const {state} = useContext(TodoContext)
-    const{all}=state
+    const {all} = state
     let filterDone = all.filter(todo => todo.done);
     return (<div>
             {

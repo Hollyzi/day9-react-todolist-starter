@@ -15,7 +15,8 @@ const TodoItem = (props) => {
         deleteTodo(props.todo.id).then((reponse) => console.log("delete successfully", reponse));
         dispatch({type: DELETE, payload: props.todo})
     }
-    const handleDone = () => {
+    const handleDone = (event) => {
+        event.stopPropagation();
         updateTodo(props.todo.id,{done:!(props.todo.done)});
         dispatch({type: DONE, payload: props.todo})
     }

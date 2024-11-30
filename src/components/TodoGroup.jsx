@@ -20,7 +20,7 @@ const TodoGroup = () => {
         <div>Add things you to do today</div>
     )
     return (
-        init&&init.length ? todoItems : emptyOutput
+        init && init.length ? todoItems : emptyOutput
     )
 }
 export default TodoGroup

@@ -10,8 +10,8 @@ import {SETALL} from "../context/todoReducer";
 
 const TodoList = () => {
     const [loading, setLoading] = useState(false)
-    const {dispatch,state} = useContext(TodoContext)
-    const {all}=state
+    const {dispatch, state} = useContext(TodoContext)
+    const {all} = state
     const [page, setPage] = useState(1)
     const [pageSize, setPageSize] = useState(5)
     const [todos, setTodos] = useState([])
@@ -19,7 +19,7 @@ const TodoList = () => {
     const renderTodos = () => {
         const startIndex = (page - 1) * pageSize;
         const endIndex = startIndex + pageSize - 1;
-        const TodoItemByPage = all?all.slice(startIndex, endIndex):null;
+        const TodoItemByPage = all ? all.slice(startIndex, endIndex) : null;
         dispatch({type: 'INIT', payload: TodoItemByPage})
     }
     const handlePageChange = (event) => {
@@ -27,12 +27,12 @@ const TodoList = () => {
     }
     useEffect(() => {
         renderTodos()
-    }, [todos, page,all])
+    }, [todos, page, all])
     useEffect(() => {
         setLoading(true);
         getTodos().then((getTodos) => {
             setTodos(getTodos)
-            dispatch({type:SETALL,payload:getTodos})
+            dispatch({type: SETALL, payload: getTodos})
         }).finally(() => {
             setLoading(false)
         });
@@ -42,7 +42,8 @@ const TodoList = () => {
         <div>
             <h1>Todo List</h1>
             {loading ? <Spin indicator={<LoadingOutlined spin/>} size="large"/> : <TodoGroup></TodoGroup>}
-            <Pagination defaultCurrent={1} total={all&&all.length} align={"center"} pageSize={5} onChange={handlePageChange}/>
+            <Pagination defaultCurrent={1} total={all && all.length} align={"center"} pageSize={5}
+                        onChange={handlePageChange}/>
             <TodoGenerator></TodoGenerator>
             <TodoSearcher/>
         </div>

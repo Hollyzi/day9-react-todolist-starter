@@ -1,33 +1,33 @@
 import axios from "axios";
 
-const instance=axios.create(
+const instance = axios.create(
     {
-        baseURL:"https://67495c7c868020296630aab6.mockapi.io/todo",
-        timeout:5000
+        baseURL: "https://67495c7c868020296630aab6.mockapi.io/todo",
+        timeout: 5000
     }
 );
 
-export const getTodos=async ()=>{
+export const getTodos = async () => {
     const response = await instance.get("/TodoItem");
     return (await response).data
 }
 
-export const addTodo=async (todo)=>{
-    const response= await instance.post("/TodoItem",todo)
+export const addTodo = async (todo) => {
+    const response = await instance.post("/TodoItem", todo)
     return response.data
 }
 
-export const deleteTodo=async (id)=>{
-    const response=await instance.delete(`/TodoItem/${id}`)
-    return  response.data
-}
-
-export const searchTodo=async (id)=>{
-    const response=await instance.get(`/TodoItem/${id}`)
+export const deleteTodo = async (id) => {
+    const response = await instance.delete(`/TodoItem/${id}`)
     return response.data
 }
 
-export const updateTodo=async (id,todo)=>{
-    const response=await instance.put(`/TodoItem/${id}`,todo)
+export const searchTodo = async (id) => {
+    const response = await instance.get(`/TodoItem/${id}`)
+    return response.data
+}
+
+export const updateTodo = async (id, todo) => {
+    const response = await instance.put(`/TodoItem/${id}`, todo)
     return response.data
 }
