@@ -42,6 +42,8 @@ const TodoItem = (props) => {
             ({
                 text: (event.target.value)
             });
+        }else{
+            setInputValue({text:""})
         }
 
     };
