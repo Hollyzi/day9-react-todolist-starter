@@ -9,7 +9,7 @@ import {LoadingOutlined} from "@ant-design/icons";
 
 const TodoList = () => {
     const [loading, setLoading] = useState(false)
-    const {dispatch} = useContext(TodoContext)
+    const {dispatch,state} = useContext(TodoContext)
     const [page, setPage] = useState(1)
     const [pageSize, setPageSize] = useState(5)
     const [todos, setTodos] = useState([])

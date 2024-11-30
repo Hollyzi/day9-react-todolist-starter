@@ -28,5 +28,6 @@ export const todoReducer = (state, action) => {
     if(action.type==="INIT"){
         return action.payload
     }
+    // if(actio)
     return state;
 };

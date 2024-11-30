@@ -14,10 +14,7 @@ const TodoGenerator = () => {
     const handleAdd = async () => {
         let newTodo = {text: text, done: false};
         const addResult = await addTodo(newTodo);
-        console.log("add success",addResult);
-        getTodos().then((todos)=>{
-            dispatch({type:'INIT',payload:todos})
-        });
+        dispatch({type:ADD,payload:addResult})
     }
     return (
         <div>
