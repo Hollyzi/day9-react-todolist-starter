@@ -13,8 +13,11 @@ const TodoGenerator = () => {
     }
     const handleAdd = async () => {
         let newTodo = {text: text, done: false};
-        const addResult = await addTodo(newTodo);
-        dispatch({type: ADD, payload: addResult})
+        if(newTodo.text.trim()){
+            const addResult = await addTodo(newTodo);
+            dispatch({type: ADD, payload: addResult})
+        }
+
     }
     return (
         <div>

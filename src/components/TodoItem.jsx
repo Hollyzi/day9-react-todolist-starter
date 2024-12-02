@@ -8,16 +8,16 @@ import TextArea from "antd/es/input/TextArea";
 
 const TodoItem = (props) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [inputValue, setInputValue] = useState({text: props.todo.text});
+    const [inputValue, setInputValue] = useState({text: props.todo.text,done:props.todo.done});
     const {dispatch} = useContext(TodoContext)
 
     const handleDelete = () => {
-        deleteTodo(props.todo.id).then((reponse) => console.log("delete successfully", reponse));
+        deleteTodo(props.todo.id).then((response) => console.log("delete successfully", response));
         dispatch({type: DELETE, payload: props.todo})
     }
     const handleDone = (event) => {
         event.stopPropagation();
-        updateTodo(props.todo.id,{done:!(props.todo.done)});
+        updateTodo(props.todo.id,{text:props.todo.text,done:!(props.todo.done)});
         dispatch({type: DONE, payload: props.todo})
     }
     const showModal = () => {
@@ -40,10 +40,11 @@ const TodoItem = (props) => {
         if (event.target.value.trim()) {
             setInputValue
             ({
-                text: (event.target.value)
+                text: (event.target.value),
+                done:props.todo.done
             });
         }else{
-            setInputValue({text:""})
+            setInputValue({text:"",done:props.todo.done})
         }
 
     };

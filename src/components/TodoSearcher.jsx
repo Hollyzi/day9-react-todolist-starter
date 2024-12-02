@@ -12,15 +12,15 @@ const TodoSearcher = () => {
         setText(event.target.value)
     }
     const handleSearch = async () => {
-
-        searchTodo(text).then(
-            (response) => {
-                dispatch({type: 'INIT', payload: [response]})
-            }
-        ).catch((error) => {
-            console.log("search error", error)
-        })
-
+        if(text.trim()){
+            searchTodo(text).then(
+                (response) => {
+                    dispatch({type: 'INIT', payload: [response]})
+                }
+            ).catch((error) => {
+                console.log("search error", error)
+            })
+        }
     }
     return (
         <div>
